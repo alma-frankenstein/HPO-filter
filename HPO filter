@@ -1,0 +1,51 @@
+
+import openpyxl
+import os
+os.getcwd()
+#make sure you're in the directory where the HPO spreadsheet is saved
+
+workbook_name = input("Please enter name of spreadsheet: ")
+
+wb = openpyxl.load_workbook(workbook_name)
+
+sheet = wb['Sheet1']
+
+y = sheet.max_row
+row_range_cutoff = y+1
+
+x = sheet.max_column
+col_range_cutoff = x + 1
+
+starting_column = 1
+relevant_conds = []
+
+genes = input("Please input genes: ")
+genes = genes.split()
+
+
+while starting_column < col_range_cutoff:
+    column = []
+#for each row in the first column, take the value and put it into an empty list.
+#if an imput gene is present, put the HPO term into the relevant_conds list.
+#do this for every column
+    for roww in range(1,row_range_cutoff):
+        z=(sheet.cell(row = roww, column=starting_column).value)
+        column.append(z)
+    starting_column += 1
+    for gene in genes:
+        if gene in column:
+            relevant_conds.append(column[0])
+
+
+#remove duplicates by changing to a dictionary then back
+relevant_conds = list(dict.fromkeys(relevant_conds))
+
+print(relevant_conds)
+
+
+
+
+
+
+
+
