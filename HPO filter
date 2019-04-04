@@ -3,12 +3,13 @@ import os
 os.getcwd()
 #make sure you're in the directory where the HPO spreadsheet is saved
 
-workbook_name = input("Please enter name of spreadsheet: ")
+workbook_name = input("Please enter name of spreadsheet, i.e. 'n17-00138 HPO List.xlsx': ")
 #include file extension (example: .xlsx). Don't put in quotes.
 
 wb = openpyxl.load_workbook(workbook_name)
 
-sheet = wb['HPO Genes']
+sheet_name = input("Please enter name of sheet that contains the HPO terms and genes, i.e. 'HPO Genes': ")
+sheet = wb[sheet_name]
 #this needs to match the name of the Excel spreadsheet
 
 y = sheet.max_row
