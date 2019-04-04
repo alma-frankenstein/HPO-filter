@@ -1,8 +1,6 @@
 import openpyxl
-import os
-os.getcwd()
-#make sure you're in the directory where the HPO spreadsheet is saved
 
+#make sure you're in the directory where the HPO spreadsheet is saved
 workbook_name = input("Please enter name of spreadsheet, i.e. 'n17-00138 HPO List.xlsx': ")
 #include file extension (example: .xlsx). Don't put in quotes.
 
